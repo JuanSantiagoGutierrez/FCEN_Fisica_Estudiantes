@@ -9,12 +9,12 @@ radio_bobina = 24 ; // Tamaño de la bobina
 angle_abertura = 35; // Ángulo de inclinación del corte del riel y la inclinación del sensor 
 
 angle_posicion_sensor = 45 ; // Posición del sensor en la circunferencia , recomendado "[5, 85]"
-largo_led = 6.5 ; // Dimensión del LED [Valor del LED + 1mm]
+largo_led = 7 ; // Dimensión del LED [Valor del LED + 1mm]
 abertura_sensor = 2.75; // Radio del sensor [Valor del LED + 0.25]
 contenedor_sensor = 5; // Radio del contenedor del sensor , por lo menos 2mm más de la abertura
 // radio_bobina no debe superar la mitad del radio_anillo.
 
-lado = 31 ;
+lado = 31 ; // Dimensión del riel
 module riel2(completo,sensor){
 if (completo == true){
         rotate([0,0,90])riel2(false);
