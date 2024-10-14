@@ -11,7 +11,7 @@ angle_abertura = 35; // Ángulo de inclinación del corte del riel y la inclinac
 angle_posicion_sensor = 45 ; // Posición del sensor en la circunferencia , recomendado "[5, 85]"
 largo_led = 7 ; // Dimensión del LED [Valor del LED + 1mm]
 abertura_sensor = 2.75; // Radio del sensor [Valor del LED + 0.25]
-contenedor_sensor = 5; // Radio del contenedor del sensor , por lo menos 2mm más de la abertura
+contenedor_sensor = 7.5; // Radio del contenedor del sensor , por lo menos 2mm más de la abertura
 // radio_bobina no debe superar la mitad del radio_anillo.
 
 lado = 31 ; // Dimensión del riel
@@ -209,7 +209,7 @@ module riel2_bruto() {
 
 module acople_sensor(){
     difference() {
-        cylinder(h = 2*abertura_riel+2*largo_led /* "abertura_riel" es un radio */, d = abertura_sensor+2.5, center = true);  // Pieza base y radio máximo del acople
+        cylinder(h = 2*abertura_riel+2*largo_led /* "abertura_riel" es un radio */, d = contenedor_sensor, center = true);  // Pieza base y radio máximo del acople
         cylinder(h = 2*abertura_riel-1, d = abertura_sensor+3, center = true); // poco importante, radio mínimo del acople
         cylinder(h = 4*abertura_riel, d = abertura_sensor, center = true); // muy importante, agujero para el sensor
     }
@@ -249,7 +249,7 @@ if (generar == true) {
                 rotate([0,0,angle_posicion_sensor])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])acople_sensor();
                 difference() {
                     riel2_bruto();
-                    rotate([0,0,angle_posicion_sensor])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, d = abertura_sensor+2.5, center = true);
+                    rotate([0,0,angle_posicion_sensor])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, d = contenedor_sensor, center = true);
                 }
               }
               rotate_extrude(angle=angle_gen_anillo,convexity=10) translate([radio_anillo,0,0]) circle(r=abertura_riel);
