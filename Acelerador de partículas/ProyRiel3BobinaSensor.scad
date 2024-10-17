@@ -105,7 +105,7 @@ module riel3(completo, sensor, generar, bobina){
             }
         }
     if (bobina == true){
-        bobinacompleta(true);
+        bobina(true);
         }
     }
 //
