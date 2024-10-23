@@ -94,10 +94,14 @@ module riel3(completo, sensor, generar, bobina){
                 }
             difference() {
                 union() {
-                    rotate([0,0,angle_posicion_sensor])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])acople_sensor();
+                    rotate([0,0,angle_posicion_sensor-(angulo_bobina/2+1.5)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])acople_sensor();
+                    rotate([0,0,angle_posicion_sensor+(angulo_bobina/2+1.5)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])acople_sensor();
                     difference() {
                         riel2_bruto();
-                        rotate([0,0,angle_posicion_sensor])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, r = contenedor_sensor, center = true);
+                            union(){
+                        rotate([0,0,angle_posicion_sensor-(angulo_bobina/2+1.5)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, r = contenedor_sensor, center = true);
+                        rotate([0,0,angle_posicion_sensor+(angulo_bobina/2+1.5)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, r = contenedor_sensor, center = true);
+                            }
                         }
                     }
                 rotate_extrude(angle=angle_gen_anillo,convexity=10) translate([radio_anillo,0,0]) circle(r=abertura_riel);
@@ -111,3 +115,4 @@ module riel3(completo, sensor, generar, bobina){
 //
 //riel3( ¿completo? , ¿sensor? , ¿generar?, ¿bobina?)  , completar con "true" para las condiciones a generar
 riel3(false, true, true, false);
+rotate([0,0,36.5])bobina();
