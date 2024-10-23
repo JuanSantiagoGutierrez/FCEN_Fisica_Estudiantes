@@ -2,6 +2,8 @@
 LN_VOLTAJE POR TIEMPO EN R1 CARGA
 ![.](<Ln_Voltaje-Tiempo CARGA R1.png>)
 
+
+
 LN_VOLTAJE POR TIEMPO EN R1 DESCARGA
 ![.](<Ln_Voltaje-Tiempo DESCARGA R1.png>)
 
