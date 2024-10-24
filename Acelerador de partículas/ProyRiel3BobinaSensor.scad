@@ -94,13 +94,13 @@ module riel3(completo, sensor, generar, bobina){
                 }
             difference() {
                 union() {
-                    rotate([0,0,angle_posicion_sensor-(angulo_bobina/2+1.5)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])acople_sensor();
-                    rotate([0,0,angle_posicion_sensor+(angulo_bobina/2+1.5)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])acople_sensor();
+                    rotate([0,0,angle_posicion_sensor-(angulo_bobina/2+3)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])acople_sensor();
+                    rotate([0,0,angle_posicion_sensor+(angulo_bobina/2+2)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])acople_sensor();
                     difference() {
                         riel2_bruto();
                             union(){
-                        rotate([0,0,angle_posicion_sensor-(angulo_bobina/2+1.5)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, r = contenedor_sensor, center = true);
-                        rotate([0,0,angle_posicion_sensor+(angulo_bobina/2+1.5)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, r = contenedor_sensor, center = true);
+                        rotate([0,0,angle_posicion_sensor-(angulo_bobina/2+3)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, r = contenedor_sensor, center = true);
+                        rotate([0,0,angle_posicion_sensor+(angulo_bobina/2+2)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, r = contenedor_sensor, center = true);
                             }
                         }
                     }
