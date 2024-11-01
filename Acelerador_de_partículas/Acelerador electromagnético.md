@@ -9,16 +9,19 @@ Las partes que conforman a este proyecto son
 - La bobina
 - El sensor 
 - Una placa de control
+- Arduino -Uno-
 
 1. El riel: Canal circular de 10cm de radio para contener a la partícula por un camino circular. 
-Este riel se diseño en OpenSCAD e imprimió en 3D.
+Este riel se diseño en OpenSCAD e imprimió en 3D. 
+    Se compone de cuatro partes que ocupan un cuarto del riel, dos de ellas se las imprimió con un riel sin módificaciones. La otras dos, son 
+el riel2sensor con unas pequeñas muecas para acomodar un sensor. La otra, se trata de un riel al cual se le agregaron 2 pares de acoples para leds, los cuales hacen de sensores. 
 
 
 2. La bobina: Equipo que contiene alambre de cobre galvanizado para entregar la energía cinética a la partícula. 
-Diseñada en OpenSCAD e impresa en 3D.
+Diseñada en OpenSCAD e impresa en 3D. Tiene una resistencia total de 2 ohms, 4 solenoides en paralelo con un total de vueltas no determinado. 
 Material para la bobina: 
-    - Cobre esmaltado cant: ???
-    - Diodo para eliminar la sobre-tensión
+    - Cobre esmaltado cant: Indeterminado
+    - Diodo en paralelo
 
 
 3. El sensor: Equipo electrónico que detectará el paso de la partícula a través del riel, dará la instrucción para el encendido de la bobina.
@@ -27,16 +30,18 @@ Material para el sensor:
 
     - LED infrarojo especificaciones: 5mm de diametro
     - LED foto-receptor especificaciones: 5mm de diametro
+    - Placa protoboar: (Revisar el esquema) resistencias, cables, pines...
 
 Esquema del circuito: 
     - insertar imagen
 
 
-4. La placa de control y alimentación: Equipo electrónico que al recibir la señal del sensor otorgará suficiente corriente a la bobina para su funcionamiento. 
+4. Arduino y fuente de laboratorio: Equipo electrónico que al recibir la señal del sensor otorgará suficiente corriente a la bobina para su funcionamiento. 
 
 Material para el control: 
-    - Fuente V = ?? 
-    - Transistor para recepción de señal y paso de corriente
-    - 
+    - Fuente V 0-50V, I máx: 5A: En específico utilizamos 3-5V --> 2homs --> 1.5 - 2.5A
+    - Transistor para recepción de señal y paso de corriente (Revisar)
+    - Arduino UNO (Computadora como fuenta 5V)
+    
 
 Herramientas: Arduino
