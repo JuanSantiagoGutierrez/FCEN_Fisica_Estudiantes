@@ -44,4 +44,4 @@ Material para el control:
     - Arduino UNO (Computadora como fuenta 5V)
     
 
-Herramientas: Arduino
+Herramientas: Arduino, fuente de laboratorio
