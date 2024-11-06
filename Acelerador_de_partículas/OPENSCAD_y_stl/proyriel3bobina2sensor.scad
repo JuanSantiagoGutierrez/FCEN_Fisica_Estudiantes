@@ -8,11 +8,18 @@ angulo_bobina = 17 ; // Ángulo generado de la bobina
 radio_bobina = 24 ; // Tamaño de la bobina 
 angle_abertura = 35; // Ángulo de inclinación del corte del riel y la inclinación del sensor 
 
-angle_posicion_sensor = 45 ; // Posición del sensor en la circunferencia , recomendado "[5, 85]"
+angle_posicion_sensor = 30 ; // Posición del sensor en la circunferencia , recomendado "[5, 85]"
+angle_separacion_sensor = 30;
 largo_led = 7 ; // Dimensión del LED [Valor del LED + 1mm]
 abertura_sensor = 2.75; // Radio del sensor [Valor del LED + 0.25]
 contenedor_sensor = 5; // Radio del contenedor del sensor , por lo menos 2mm más de la abertura
 // radio_bobina no debe superar la mitad del radio_anillo.
+
+grosor_bobina2 = 5;
+angle_gen_bobina2 = 15;
+tope_bobina2 = 15;
+angle_espesor_tope_bobina2 = 2;
+angle_posicion_bobina2 = 37;
 
 lado = 31 ; // Dimensión del riel
 
@@ -94,13 +101,13 @@ module riel3(completo, sensor, generar, bobina){
                 }
             difference() {
                 union() {
-                    rotate([0,0,angle_posicion_sensor-(angulo_bobina/2+3)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])acople_sensor();
-                    rotate([0,0,angle_posicion_sensor+(angulo_bobina/2+2)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])acople_sensor();
+                    rotate([0,0,angle_posicion_sensor])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])acople_sensor();
+                    rotate([0,0,angle_posicion_sensor+angle_separacion_sensor])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])acople_sensor();
                     difference() {
                         riel2_bruto();
                             union(){
-                        rotate([0,0,angle_posicion_sensor-(angulo_bobina/2+3)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, r = contenedor_sensor, center = true);
-                        rotate([0,0,angle_posicion_sensor+(angulo_bobina/2+2)])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, r = contenedor_sensor, center = true);
+                        rotate([0,0,angle_posicion_sensor])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, r = contenedor_sensor, center = true);
+                        rotate([0,0,angle_posicion_sensor+angle_separacion_sensor])translate([radio_anillo,0,0])rotate([0,90-angle_abertura,0])translate([0,0,0])cylinder(h = 4*abertura_riel, r = contenedor_sensor, center = true);
                             }
                         }
                     }
@@ -116,3 +123,16 @@ module riel3(completo, sensor, generar, bobina){
 //riel3( ¿completo? , ¿sensor? , ¿generar?, ¿bobina?)  , completar con "true" para las condiciones a generar
 riel3(false, true, true, false);
 
+#union(){
+    rotate(angle_posicion_bobina2)rotate_extrude(angle=angle_gen_bobina2,convexity=10)translate([100,0,0])difference(){
+    circle(r=abertura_riel + grosor_bobina2);
+    circle(r=abertura_riel);
+    }
+rotate(angle_posicion_bobina2)rotate_extrude(angle=angle_espesor_tope_bobina2,convexity=10)translate([100,0,0])difference(){
+    circle(r=abertura_riel + tope_bobina2);
+    circle(r=abertura_riel);
+}
+rotate(angle_posicion_bobina2+angle_gen_bobina2-angle_espesor_tope_bobina2)rotate_extrude(angle=angle_espesor_tope_bobina2,convexity=10)translate([100,0,0])difference(){
+    circle(r=abertura_riel + tope_bobina2);
+    circle(r=abertura_riel);
+}}
