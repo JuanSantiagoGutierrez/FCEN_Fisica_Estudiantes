@@ -32,9 +32,8 @@ void loop() {
     Serial.print("Velocidad2: ");
     Serial.println(velo2);
     flag2=false;
-    }
-   
     sei();
+    }   
     
 // ---------------- //
   if(flag3){
