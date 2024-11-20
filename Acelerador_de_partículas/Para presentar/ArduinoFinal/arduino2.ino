@@ -29,12 +29,14 @@ void loop() {
     digitalWrite(9,HIGH);
     delay(Encendido);
     digitalWrite(9,LOW);
-    sei();
-// ---------------- //
     Serial.print("Velocidad2: ");
     Serial.println(velo2);
     flag2=false;
-  }
+    }
+   
+    sei();
+    
+// ---------------- //
   if(flag3){
     // ---------------- //
       cli();
