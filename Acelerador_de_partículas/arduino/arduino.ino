@@ -30,37 +30,10 @@ void setup() {
   pinMode(bobinaPin, OUTPUT);
 }
 
-void apagarS1() {
-  // Tomar el tiempo de salida
-  tiempofinalS1 = millis();
-   // Apagar bobina
-  digitalWrite(bobinaPin, LOW);
-  // Calculo de la velocidad S1
-  velocidadS1 = (distanciaS1 * 1000) / (tiempofinalS1 - tiempoinicialS1);
-  ContadorVuelta += 1;
-
-  Serial.print("tiempofinalS1: ");
-  Serial.println(tiempofinalS1);
-      
-  Serial.print("Vuelta: ");
-  Serial.println(ContadorVuelta);
-
-  Serial.print("Velocidad S1: ");
-  Serial.print(velocidadS1);
-  Serial.println(" cm/s");
-  bobina = 0;
-}
 void loop()
 { sensorS1Pin = digitalRead(Pin2);
   sensorS2Pin = digitalRead(Pin3);
-  /*
-  Serial.println("----------");
-  Serial.print("Sensor: ");
-  Serial.println(sensorS1Pin);
-  Serial.print("Bobina: ");
-  Serial.println(bobina);
-  delay(1000);
-  */
+
   if ((sensorS1Pin == 1) && (bobina == 0)){
       // El estado de la bobina + encendido
      digitalWrite(bobinaPin, HIGH);
